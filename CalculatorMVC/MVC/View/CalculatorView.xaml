@@ -1,0 +1,271 @@
+﻿<UserControl x:Class="CalculatorMVC.MVC.View.CalculatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalculatorMVC.MVC.View"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="14"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="#262626"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="605" d:DesignWidth="400">
+    <StackPanel>
+        <Grid Height="190" Margin="20 0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30" 
+                           x:Name="SecondaryDisplay"                           
+                           TextAlignment="Right" 
+                           Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" 
+                           VerticalAlignment="Center"
+                           Margin="20 0 20 10"/>
+            <TextBlock Grid.Row="1"
+                           x:Name="PrimaryDisplay"
+                           FontSize="50"                            
+                           TextAlignment="Right" 
+                           Foreground="{StaticResource PrimaryHueDarkForegroundBrush}" 
+                           VerticalAlignment="Center"
+                           Margin="20 0 20 10">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Color="#FF5885A4" />
+                </TextBlock.Effect>
+            </TextBlock>
+        </Grid>
+        <Viewbox x:Name="buttonsBox" Stretch="Fill">
+
+        </Viewbox>
+        <Grid Background="#FF434343" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.ColumnSpan="4" Grid.Row="0"
+                           Fill="#4d4d4d"/>
+            <Rectangle Grid.RowSpan="5" Grid.Column="3"
+                           Fill="#4d4d4d"/>
+            <Button Grid.Column="0" Grid.Row="0"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="ClearButton" Content="C"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}" 
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="FuncPad_Click" />
+            <Button Grid.Column="1" Grid.Row="0"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="SquareRoot"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="FuncPad_Click">
+                <materialDesign:PackIcon Kind="SquareRoot" Width="40" Height="40"/>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="0"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Percent" Content="%"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="FuncPad_Click" />
+            <Button Grid.Column="3" Grid.Row="0"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Division"
+                        Content="/"
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30"
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="OperationPad_Click" >
+            </Button>
+            <Button Grid.Column="0" Grid.Row="1"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_7" Content="7"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="1" Grid.Row="1"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_8" Content="8"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="2" Grid.Row="1"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_9" Content="9"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="3" Grid.Row="1"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Multiplicacion" Content="*"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="OperationPad_Click" />
+            <Button Grid.Column="0" Grid.Row="2"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_4" Content="4"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="1" Grid.Row="2"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_5" Content="5"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="2" Grid.Row="2"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_6" Content="6"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="3" Grid.Row="2"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Minus" Content="-"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="50" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="OperationPad_Click" />
+            <Button Grid.Column="0" Grid.Row="3"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_1" Content="1"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="1" Grid.Row="3"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_2" Content="2"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="2" Grid.Row="3"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_3" Content="3"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="3" Grid.Row="3"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Plus" Content="+"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="OperationPad_Click" />
+            <Button Grid.Column="0" Grid.Row="4"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_0" Content="0"                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="NumPad_Click" />
+            <Button Grid.Column="1" Grid.Row="4"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Dot" 
+                        VerticalAlignment="Center"
+                        Content=","
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Bold" Click="NumPad_Click" >
+            </Button>
+            <Button Grid.Column="2" Grid.Row="4"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="BackSpace"
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="FuncPad_Click" >
+                <materialDesign:PackIcon Kind="BackspaceOutline" Width="30" Height="30"/>
+            </Button>
+            <Button Grid.Column="3" Grid.Row="5"
+                        Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
+                        x:Name="Numpad_Equal" Content="="                              
+                        Width="75" 
+                        Height="75"
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}"  
+                        FontSize="30" 
+                        Foreground="#DDFFFFFF" 
+                        FontWeight="Light" Click="Equal_Click"  />
+        </Grid>
+    </StackPanel>
+</UserControl>
