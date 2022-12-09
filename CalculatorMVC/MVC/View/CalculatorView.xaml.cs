@@ -1,10 +1,8 @@
 ﻿using CalculatorMVC.MVC.Controller;
-using CalculatorMVC.MVC.Model;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalculatorMVC.MVC.View
 {
@@ -38,8 +36,7 @@ namespace CalculatorMVC.MVC.View
                 current_calculation = "0";
                 Calculation_Display();
                 isResult= false;
-            }              
-
+            }
             if (button.Content.ToString() == ",")
             {
                 if (isDecimal)
@@ -58,18 +55,8 @@ namespace CalculatorMVC.MVC.View
             Button button = (Button)sender;
             if (hasOperator)
             {
-                var num2 = getLastItem(current_calculation);
-                if (num2 == "")
-                    return;
-                value2 = Double.Parse(num2);
-                var calc = new CalculatorController(value1, value2, operation);
-                double result = calc.Calculate();
-                updateDisplay(result);
-                hasOperator = false;
-                isResult= false;
-                operationPosition = 0;
-                operation = String.Empty;
-
+                getCalculate();
+                isResult = false;
             }
             if (current_calculation.Length > 0 && hasOperator == false)
             {
@@ -80,6 +67,7 @@ namespace CalculatorMVC.MVC.View
                 Calculation_Display();
                 isDecimal = false;
                 hasOperator = true;
+                isResult= false;
             }
         }
         private void FuncPad_Click(object sender, RoutedEventArgs e)
@@ -120,6 +108,7 @@ namespace CalculatorMVC.MVC.View
         {
             if(hasOperator && operationPosition < current_calculation.Length)
             {
+                //getCalculate();
                 var num2 = getLastItem(current_calculation);
                 if (num2 == "")
                     return;
@@ -171,14 +160,13 @@ namespace CalculatorMVC.MVC.View
                     break;
             }
         }
+        //Auxiliar methods
         private void updateDisplay(double result)
         {
             SecondaryDisplay.Text = current_calculation + " = ";
             current_calculation = result.ToString();
             PrimaryDisplay.Text = current_calculation;
         }
-        //Auxiliar methods
-
         private async void Backspace()
         {
             if (current_calculation.Length == 1)
@@ -194,6 +182,8 @@ namespace CalculatorMVC.MVC.View
             }
             if (current_calculation.Length > 1)
             {
+                if (current_calculation.EndsWith(","))
+                    isDecimal= false;                
                 current_calculation = current_calculation.Remove(current_calculation.Length - 1);
                 PrimaryDisplay.Text = current_calculation;
 
@@ -236,6 +226,19 @@ namespace CalculatorMVC.MVC.View
                 lastItem += operation[i];
             }
             return lastItem;
+        }
+        private void getCalculate()
+        {
+            var num2 = getLastItem(current_calculation);
+            if (num2 == "")
+                return;
+            value2 = Double.Parse(num2);
+            var calc = new CalculatorController(value1, value2, operation);
+            double result = calc.Calculate();
+            updateDisplay(result);
+            hasOperator = false;
+            operationPosition = 0;
+            operation = String.Empty;
         }
 
     }
